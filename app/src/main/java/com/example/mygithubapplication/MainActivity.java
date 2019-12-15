@@ -9,7 +9,10 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
@@ -33,13 +36,12 @@ public class MainActivity extends AppCompatActivity {
     private JsonPlaceHolderApi jsonPlaceHolderApi;
     private List<GitHubUser> userfollowers;
     private String usertext;
-
+    private ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Intent intent =getIntent();
         usertext = intent.getStringExtra(MainActivityIntro.EXTRA_TEXT);
         //textCheck = findViewById(R.id.textView1);
@@ -57,8 +59,11 @@ public class MainActivity extends AppCompatActivity {
         tvRepos = findViewById(R.id.repos);
         tvFollowing = findViewById(R.id.following);
         mainUserImage = findViewById(R.id.mainUserimage);
-        getUser();
+        progressBar = findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.VISIBLE);
         getUserFollowers();
+        getUser();
+        progressBar.setVisibility(View.GONE);
     }
     private void getUser() {
 

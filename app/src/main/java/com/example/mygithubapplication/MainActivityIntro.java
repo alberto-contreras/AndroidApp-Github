@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +27,7 @@ public class MainActivityIntro extends AppCompatActivity {
         searchbtn = findViewById(R.id.search_btn);
         Ghublogo = findViewById(R.id.iconGHub);
         Picasso.with(getApplicationContext()).load("https://avatars1.githubusercontent.com/u/583231?s=400&v=4").into(Ghublogo);
-        searchbtn.setOnClickListener(new View.OnClickListener() {
+        searchbtn.setOnClickListener(new View.OnClickListener() { //when we click the button we call the function that send the data to the other activity
             @Override
             public void onClick(View v) {
                 openActivity2();
@@ -39,6 +40,7 @@ public class MainActivityIntro extends AppCompatActivity {
         Intent intent = new Intent(this,MainActivity.class);//We call the second activity
         intent.putExtra(EXTRA_TEXT, user);//We pass the objects of this activity that we are going to need in the other one
         startActivity(intent);//Start
+        //progressBar.setVisibility(View.GONE);
     }
 
 
